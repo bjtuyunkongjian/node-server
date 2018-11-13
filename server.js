@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 
 const app = express();
 
-const shengdaoRouter = require('./routers/shengdao');
+const roadRouter = require('./routers/road');
 
 // 支持跨域配置
 const allowCrossDomain = function (req, res, next) {
@@ -21,10 +21,10 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // 路由
-app.use('/shengdao', shengdaoRouter);
+app.use('/road', roadRouter);
 
 app.use('/static', express.static('static'));
 
