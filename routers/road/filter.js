@@ -44,10 +44,10 @@ module.exports = function (data, bounds) {
 // 过滤坐标
 function _filterCoordinates(coordinates, bounds) {
   const _coordinates = coordinates.filter(coordinate => { // coordinate是数组
-    return coordinate[0] > bounds[0][0] &&
-      coordinate[0] < bounds[1][0] &&
-      coordinate[1] < bounds[0][1] &&
-      coordinate[1] > bounds[1][1]
+    return coordinate[0] >= bounds[0][0] &&
+      coordinate[0] <= bounds[1][0] &&
+      coordinate[1] <= bounds[0][1] &&
+      coordinate[1] >= bounds[1][1]
   });
 
   if (_coordinates.length > 0) {

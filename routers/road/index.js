@@ -23,6 +23,8 @@ router.post('/', (req, res) => {
     zoom
   } = req.body;
   const startTime = (new Date()).getTime();
+  console.log('开始时间 ===> ', startTime);
+
   const road = {}; // 所有道路信息数据
   // 国道
   if (zoom >= cxZoom) { // 显示所有未抽稀过的数据
@@ -53,7 +55,7 @@ router.post('/', (req, res) => {
   }
 
   const endTime = (new Date()).getTime();
-  console.log('执行时间 ===> ', endTime - startTime);
+  console.log('结束时间 ===> ', endTime);
   res.json({
     data: road, // 返回的数据
     statusInfo: null,
