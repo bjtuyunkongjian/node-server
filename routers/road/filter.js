@@ -5,8 +5,8 @@
 module.exports = function (data, bounds) {
   const features = [];
   for (let item of data.features) {
-    if (item.geometry.type.indexOf('Multi') === -1) { // 单数据
-
+    if(!item.geometry) continue;
+    if ((item.geometry.type.indexOf('Multi') === -1)) { // 单数据
       const coordinates = _filterCoordinates(item.geometry.coordinates, bounds);
       coordinates.length > 0 && features.push({
         "type": "Feature",
@@ -42,6 +42,7 @@ module.exports = function (data, bounds) {
 }
 
 // 过滤坐标
+// 解决了压盖问题
 function _filterCoordinates(coordinates, bounds) {
   const _coordinates = coordinates.filter(coordinate => { // coordinate是数组
     return coordinate[0] >= bounds[0][0] &&
@@ -63,4 +64,27 @@ function _filterCoordinates(coordinates, bounds) {
     }
   }
   return _coordinates;
+
+  // let _start = -1, _end = -1;
+
+  // for(let i = 0; i < coordinates.length; i++) {
+  //   const coordinate = coordinates[i];
+  //   if(coordinate[0] >= bounds[0][0] &&
+  //     coordinate[0] <= bounds[1][0] &&
+  //     coordinate[1] <= bounds[0][1] &&
+  //     coordinate[1] >= bounds[1][1]) {
+  //     if(_start === -1) {
+  //       _start = _end = i;
+  //     } else {
+  //       _end = i;
+  //     }
+  //   }
+  // }
+
+  // const _realStart = _start - 1 === -1 ? 0 : _start - 1;
+  // const _realEnd = _end + 1 > coordinates.length ? coordinates.length : _end + 1;
+
+  // return coordinates.slice(_realStart, _realEnd);
+
+
 }
