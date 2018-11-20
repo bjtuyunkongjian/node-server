@@ -5,7 +5,7 @@ const shengGDBt = require('./shengGDBt'); // 省道的geojson数据
 const shengGDBt_cx = require('./shengGDBt_5'); // 省道抽稀过后的geojson数据
 // 12级显示
 const zgdGDB = require('./zgdGDB'); // 主干道
-const zgdGDB_cx = require('./zgdGDB_5'); // 主干道
+const zgdGDB_cx = require('./zgdGDB_50'); // 主干道
 const xiandaoGDB = require('./xiandaoGDB'); // 县道
 const xiandaoGDB_cx = require('./xiandaoGDB_5'); // 县道
 const gjlGDB = require('./gjlGDB'); // 高架路
