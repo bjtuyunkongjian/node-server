@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
 
 const app = express();
-
-const roadRouter = require('./routers/road');
+// 路由
+// const roadRouter = require('./routers/road');
+const testRouter = require('./routers/test');
 
 // 支持跨域配置
 const allowCrossDomain = function (req, res, next) {
@@ -24,8 +25,8 @@ app.use(bodyParser.json());
 // app.use(cookieParser());
 
 // 路由
-app.use('/road', roadRouter);
-
+// app.use('/road', roadRouter);
+app.use('/test', testRouter);
 app.use('/static', express.static('static'));
 
 app.listen(3000);
